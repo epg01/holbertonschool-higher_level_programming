@@ -9,13 +9,17 @@
 
 int check_cycle(listint_t *list)
 {
-	int Number = list->n;
-
-	while (list->next)
+	if (!list)
+		return (0);
+	else
 	{
-		if (Number == list->next->n)
-			return (1);
-		list = list->next;
+		int Number = list->n;
+
+		while (list->next)
+			if (Number == list->next->n)
+				return (1);
+			else
+				list = list->next;
+		return (0);
 	}
-	return (0);
 }
