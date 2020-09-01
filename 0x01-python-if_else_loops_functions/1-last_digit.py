@@ -13,3 +13,4 @@ elif numberld < 6:
     str1 = "less than 6 and not 0"
 
 print("Last digit of {} is {} and is {}".format(number, numberld, str1))
+
