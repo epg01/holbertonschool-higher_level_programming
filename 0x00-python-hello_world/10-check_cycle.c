@@ -13,10 +13,10 @@ int check_cycle(listint_t *list)
 		return (0);
 	else
 	{
-		int Number = list->n;
+		listint_t *pointer = list;
 
 		while (list->next)
-			if (Number == list->next->n)
+			if (pointer == list->next)
 				return (1);
 			else
 				list = list->next;
