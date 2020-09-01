@@ -1,25 +1,29 @@
 #include "lists.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 /**
- * check_cycle -  function in C that checks if a singly linked list
- *                has a cycle in it.
- * @list: Data structure.
- * Return: 0 if there is no cycle, 1 if there is a cycle.
+ * check_cycle - check for a cycle lined list
+ * @list: pointer to head node
+ *
+ * Return: integer
  */
-
 int check_cycle(listint_t *list)
 {
+	listint_t *address;
+
 	if (!list)
 		return (0);
-	else
-	{
-		listint_t *pointer = list;
 
-		while (list->next)
-			if (pointer == list->next)
-				return (1);
-			else
-				list = list->next;
-		return (0);
+	address = list;
+
+	while (list->next != NULL)
+	{
+		if (address == list->next)
+		{
+			return (1);
+		}
+		list = list->next;
 	}
+
+	return (0);
 }
