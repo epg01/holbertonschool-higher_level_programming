@@ -11,3 +11,4 @@ def uppercase(str):
         else:
             print("{}".format(Character if ord(Character) >= 65 and \
                               ord(Character) <= 90 else Character))
+
