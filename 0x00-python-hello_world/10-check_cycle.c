@@ -7,23 +7,17 @@
  *
  * Return: integer
  */
-int check_cycle(listint_t *list)
+int check_cycle(listint_t *head)
 {
-	listint_t *address;
+	listint_t *hare = head;
+	listint_t *turtle = head;
 
-	if (!list)
-		return (0);
-
-	address = list;
-
-	while (list->next != NULL)
+	while (head && hare->next && hare->next->next)
 	{
-		if (address == list->next)
-		{
+		hare = hare->next->next;
+		turtle = turtle->next;
+		if (turtle == hare)
 			return (1);
-		}
-		list = list->next;
 	}
-
 	return (0);
 }
