@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def fizzbuzz():
-    for Number in range(0, 101):
+    for Number in range(1, 101):
         if (not (Number % 3)) and (not (Number % 5)):
             Message = 'FizzBuzz'
         elif  (not (Number % 3)):
