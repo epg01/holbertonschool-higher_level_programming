@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 def uppercase(str):
+    if not str:
+        return None
     for Index in range(len(str)):
         Character = str[Index]
         Solve_Character = Character
