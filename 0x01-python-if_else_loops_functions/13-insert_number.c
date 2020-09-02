@@ -1,40 +1,54 @@
 #include "lists.h"
-
 /**
  * insert_node - prints all elements of a listint_t list
  * @head: pointer to head of list
- * @Number: the number
+ * @number: the number
  * Return: the new node
  */
-
-listint_t *insert_node(listint_t **head, int Number)
+listint_t *insert_node(listint_t **head, int number)
 {
-	if (!(*head))
+	listint_t *new;
+	listint_t *aux;
+	int i = 0;
+
+	if (head == NULL)
 		return (NULL);
-	if (Number < 0 && (*head)->n > Number)
+	aux = *head;
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = number;
+	new->next = NULL;
+	if (*head == NULL)
 	{
-		listint_t *New_Nodo;
-
-		New_Nodo = (listint_t *)malloc(sizeof(listint_t));
-		if (!(New_Nodo))
-			return (NULL);
-		New_Nodo->n    = Number;
-		New_Nodo->next = (*head);
-		return (New_Nodo);
-	}
-	else if (!((*head)->next) || ((*head)->next->n > Number))
-	{
-		listint_t *New_Nodo;
-
-		New_Nodo = (listint_t *)malloc(sizeof(listint_t));
-
-		if (!(New_Nodo))
-			return (NULL);
-		New_Nodo->n    = Number;
-		New_Nodo->next = (*head)->next;
-		(*head)->next  = New_Nodo;
-		return (New_Nodo);
+		*head = new; 
 	}
 	else
-		return (insert_node(&(*head)->next, Number));
+	{
+		if (number < aux->n)
+		{
+			new->next = aux;
+			*head = new;
+			i = 1;
+		}
+		else
+		{
+			while (aux->next != NULL)
+			{
+				if (number < aux->next->n)
+				{
+					new->next = aux->next;
+					aux->next = new;
+					break;
+				}
+				aux = aux->next;
+			}
+		}
+		if (aux->next == NULL && i == 0)
+		{
+			aux->next = new;
+			new->next = NULL;
+		}
+	}
+	return (new);
 }
