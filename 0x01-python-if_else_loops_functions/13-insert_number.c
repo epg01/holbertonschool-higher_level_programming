@@ -1,33 +1,48 @@
 #include "lists.h"
+#include <stdlib.h>
 
-listint_t *insert_node(listint_t **head, int Number)
+/**
+ * *insert_node - insert a node in sorted lned list
+ * @head: header of list
+ * @number: number to insert
+ *
+ * Return: new node
+ */
+listint_t *insert_node(listint_t **head, int number)
 {
-	if (!(*head))
+	listint_t *current;
+	listint_t *new_node;
+
+	current = *head;
+
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
 		return (NULL);
-	if (Number < 0 && (*head)->n > Number)
-	{
-		listint_t *New_Nodo;
-		New_Nodo = (listint_t *)malloc(sizeof(listint_t));
-		if (!(New_Nodo))
-			return (NULL);
-		New_Nodo->n    = Number;
-		New_Nodo->next = (*head);
-		return (New_Nodo);
-	}
-	else if (!((*head)->next) || ((*head)->next->n > Number))
-	{
-		listint_t *New_Nodo;
+	new_node->n = number;
+	new_node->next = NULL;
 
-		New_Nodo = (listint_t *)malloc(sizeof(listint_t));
+	if (*head == NULL)
+		*head = new_node;
 
-		if (!(New_Nodo))
-			return (NULL);
-
-		New_Nodo->n    = Number;
-		New_Nodo->next = (*head)->next;
-		(*head)->next  = New_Nodo;
-		return (New_Nodo);
-	}
+	if (current->n > number)
+		new_node->next = *head, *head = new_node;
 	else
-		return (insert_node(&(*head)->next, Number));
+	{
+		while (current->next != NULL)
+		{
+			if ((current->n < number) && ((current->next)->n > number))
+			{
+				current->next = new_node;
+				new_node->next = current->next;
+			}
+			current = current->next;
+		}
+
+		if (current->n < number)
+		{
+
+			current->next = new_node;
+		}
+	}
+	return (new_node);
 }
