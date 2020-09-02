@@ -1,15 +1,7 @@
-#!/usr/bin/python3
 def uppercase(str):
-    if not str:
-        return None
-    for Index in range(len(str)):
-        Character = str[Index]
-        Solve_Character = Character
-        if ord(Character) >= 97 and ord(Character) <= 122:
-            Character = chr(ord(Character) - 97 + 65)
-        if Index < (len(str) - 1):
-            print("{}".format(Character if ord(Character) >= 65 and
-                              ord(Character) <= 90 else Character), end='')
+    for i in range(len(str)):
+        if ord(str[i]) >= 97 and ord(str[i]) <= 122:
+            print("{}".format(chr(ord(str[i]) - 32)), end="")
         else:
-            print("{}".format(Character if ord(Character) >= 65 and
-                              ord(Character) <= 90 else Character))
+            print("{}".format(str[i], end=''))
+    print("")
