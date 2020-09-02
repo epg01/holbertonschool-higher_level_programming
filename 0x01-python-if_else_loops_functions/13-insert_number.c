@@ -3,7 +3,7 @@
 /**
  * insert_node - prints all elements of a listint_t list
  * @head: pointer to head of list
- * @number: the number
+ * @Number: the number
  * Return: the new node
  */
 
