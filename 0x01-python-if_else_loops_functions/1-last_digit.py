@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import random
-number = -23
+number = random.randint(-10000, 10000)
 Number_Last = int(str(number)[-1])
 if number < 0:
     Number_Last *= -1
