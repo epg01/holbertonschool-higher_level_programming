@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-for n1 in range(0, 10):
-    for n2 in range(n1 + 1, 10):
-        if n1 == 8 and n2 == 9:
-            print("{}{}".format(n1, n2))
-            continue
-        print("{}{}".format(n1, n2), end=", ")
+for i in range(10):
+    for j in range(i + 1, 10):
+        if i == 8 and j == 9:
+            print("{}{}".format(i, j))
+            break
+        print("{}{}".format(i, j), end=", ")
