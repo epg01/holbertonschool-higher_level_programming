@@ -9,6 +9,8 @@
 
 listint_t *insert_node(listint_t **head, int Number)
 {
+	if (!(*head))
+		return (NULL);
 	if (Number < 0 && (*head)->n > Number)
 	{
 		listint_t *New_Nodo;
