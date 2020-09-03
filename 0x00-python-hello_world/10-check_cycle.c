@@ -9,14 +9,14 @@
  * Return: 0 if there is no cycle, 1 if there is a cycle.
  */
 
-int Form_Recursive(listint_t *Element, listint_t *Head)
+int Form_Recursive(listint_t *Tortuga, listint_t *Conejto)
 {
         if (!Tortuga || !Conejto) // Element == NULL
 		return (0);
         else if (Tortuga == Conejto)
 		return (1);
         else
-                return (recursiva(Tortuga->next, Conejto->next->next));
+                return (Form_Recursive(Tortuga->next, Conejto->next->next));
 }
 
 
@@ -28,5 +28,5 @@ int Form_Recursive(listint_t *Element, listint_t *Head)
 
 int check_cycle(listint_t *head)
 {
-	return (Form_Recursive(head, head));
+	return (Form_Recursive(head, head->next->next));
 }
