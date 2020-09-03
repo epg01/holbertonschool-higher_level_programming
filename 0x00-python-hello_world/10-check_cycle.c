@@ -11,12 +11,12 @@
 
 int Form_Recursive(listint_t *Element, listint_t *Head)
 {
-	if (!(Element))
+        if (!Tortuga || !Conejto) // Element == NULL
 		return (0);
-	else if (Element->next == Head)
+        else if (Tortuga == Conejto)
 		return (1);
-	else
-		return (Form_Recursive(Element->next, Head));
+        else
+                return (recursiva(Tortuga->next, Conejto->next->next));
 }
 
 
