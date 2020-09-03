@@ -9,9 +9,7 @@
 
 listint_t *insert_node(listint_t **head, int Number)
 {
-	if (!(*head))
-		return (NULL);
-	else if (!((*head)->next) || ((*head)->next->n > Number))
+	if (!(*head) || !((*head)->next) || ((*head)->next->n > Number))
 	{
 		listint_t *New_Nodo;
 
@@ -19,7 +17,7 @@ listint_t *insert_node(listint_t **head, int Number)
 		if (!(New_Nodo))
 			return (NULL);
 		New_Nodo->n    = Number;
-		if ((*head)->n > Number)
+		if (!(*head) || (*head)->n > Number)
 			New_Nodo->next = *head, (*head) = New_Nodo;
 		else
 			New_Nodo->next = (*head)->next, (*head)->next  = New_Nodo;
