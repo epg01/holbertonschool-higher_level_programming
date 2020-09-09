@@ -8,3 +8,5 @@ def new_in_list(my_list, idx, element):
             else:
                 copy_list.append(element)
         return copy_list
+    else:
+        return my_list
