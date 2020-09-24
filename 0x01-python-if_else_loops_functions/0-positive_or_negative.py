@@ -7,4 +7,4 @@ elif Number > 0:
     Message = "is positive"
 else:
     Message = "is negative"
-print("{:d} {:s}".format(Number, Message))
+print("{0:d} {1:s}".format(Number, Message))
