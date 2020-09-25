@@ -15,4 +15,4 @@ elif Last_Digit > 5:
     print("Last digit of {} is {} {}".format(number, Last_Digit, Message))
 else:
     Message = "and is less that 6 and not 0"
-    print("Last digit of {} is {}".format(number, Last_Digit, Message))
+    print("Last digit of {} is {} {}".format(number, Last_Digit, Message))
