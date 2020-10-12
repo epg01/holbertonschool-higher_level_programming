@@ -11,7 +11,6 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
-
     @property
     def width(self):
         """ """
@@ -77,7 +76,25 @@ class Rectangle(Base):
             print("{0}".format(self.x * ' '), end='')
             print(self.width * "#")
 
-
-
     def __str__(self):
         return "[Rectangle] ({0.id}) {0.x}/{0.y} - {0.width}/{0.height}".format(self)
+
+    def update(self, *args, **kwargs):
+        try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
+        except:
+                pass
+        for key, value in kwargs.items():
+                try:
+                    setattr(self, key, value)
+                except:
+                    pass
+    def to_dictionary(self):
+        dic = {}
+        for i in ["id", "width", "height", "x", "y"]:
+            dic[i] = getattr(self, i)
+        return dic
