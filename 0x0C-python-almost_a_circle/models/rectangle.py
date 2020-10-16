@@ -1,100 +1,152 @@
 #!/usr/bin/python3
-""" """
+"""[summary]"""
 from models.base import Base
 
+
 class Rectangle(Base):
-    """ """
+    """[summary]
+    """
     def __init__(self, width, height, x=0, y=0, id=None):
-        super().__init__(id)
+        """
+        Args:
+            width ([type]): [description]
+            height ([type]): [description]
+            x (int, optional): [description]. Defaults to 0.
+            y (int, optional): [description]. Defaults to 0.
+            id ([type], optional): [description]. Defaults to None.
+        """
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
-        """ """
+        """
+        Returns:
+            [type]: [description]
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """ """
-        Rectangle.Handle_error('width', value)
+        """
+        Args:
+            value ([type]): [description]
+        """
+        if type(value) != int:
+            raise TypeError('width must be an integer')
+        elif value <= 0:
+            raise ValueError('width must be > 0')
         self.__width = value
 
     @property
     def height(self):
-        """ """
+        """
+        Returns:
+            [type]: [description]
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """ """
-        Rectangle.Handle_error('height', value)
+        """
+        Args:
+            value ([type]): [description]
+        """
+        if type(value) != int:
+            raise TypeError('height must be an integer')
+        elif value <= 0:
+            raise ValueError('height must be > 0')
         self.__height = value
 
     @property
-    def y(self):
-        """ """
-        return self.__y
-
-    @y.setter
-    def y(self, value):
-        """ """
-        Rectangle.Handle_error('y', value)
-        self.__y = value
-
-    @property
     def x(self):
-        """ """
+        """
+        Returns:
+            [type]: [description]
+        """
         return self.__x
 
     @x.setter
     def x(self, value):
-        """ """
-        Rectangle.Handle_error('x', value)
+        """
+        Args:
+            value ([type]): [description]
+        """
+        if type(value) != int:
+            raise TypeError('x must be an integer')
+        elif value < 0:
+            raise ValueError('x must be >= 0')
         self.__x = value
 
-    @staticmethod
-    def Handle_error(Name_Attribute, value):
-        """ """
+    @property
+    def y(self):
+        """
+        Returns:
+            [type]: [description]
+        """
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        """
+        Args:
+            value ([type]): [description]
+        """
         if type(value) != int:
-            raise TypeError("{0} must be an integer".format(Name_Attribute))
-        if Name_Attribute in ["width", "height"] and value <= 0:
-            raise ValueError("{0} must be > 0".format(Name_Attribute))
-        if Name_Attribute in ["x", "y"] and value < 0:
-            raise ValueError("{0} must be >= 0".format(Name_Attribute))
+            raise TypeError('y must be an integer')
+        elif value < 0:
+            raise ValueError('y must be >= 0')
+        self.__y = value
 
     def area(self):
-        """ """
+        """
+        Returns:
+            [type]: [description]
+        """
         return self.width * self.height
 
     def display(self):
-        """ """
-        print("{0}".format(self.y * '\n'), end='')
-        for value in range(self.height):
-            print("{0}".format(self.x * ' '), end='')
-            print(self.width * "#")
+        """[summary]
+        """
+        board = ""
+        for i in range(self.y):
+            board += '\n'
+        for j in range(self.height):
+            board += ' ' * self.x + '#' * self.width + '\n'
+        print(board, end='')
 
     def __str__(self):
-        return "[Rectangle] ({0.id}) {0.x}/{0.y} - {0.width}/{0.height}".format(self)
+        """
+        Returns:
+            [type]: [description]
+        """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y,
+            self.width, self.height
+        )
 
     def update(self, *args, **kwargs):
-        try:
-                self.id = args[0]
-                self.width = args[1]
-                self.height = args[2]
-                self.x = args[3]
-                self.y = args[4]
-        except:
-                pass
-        for key, value in kwargs.items():
-                try:
-                    setattr(self, key, value)
-                except:
-                    pass
+        """[summary]
+        """
+        atr = ['id', 'width', 'height', 'x', 'y']
+
+        if args is None or len(args) == 0:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+            return
+        for i, v in enumerate(args[:5]):
+            setattr(self, atr[i], v)
+
     def to_dictionary(self):
-        dic = {}
-        for i in ["id", "width", "height", "x", "y"]:
-            dic[i] = getattr(self, i)
-        return dic
+        """
+        Returns:
+            [type]: [description]
+        """
+        dict_ = {'id': self.id, 'width': self.width,
+                 'height': self.height, 'x': self.x,
+                 'y': self.y
+                 }
+        return dict_
