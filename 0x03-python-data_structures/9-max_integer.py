@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def search_max(my_list, max_value, length):
-    if length == 1:
+    if not length:
         if max_value < my_list[0]:
             return my_list[0]
         else:
@@ -12,9 +12,5 @@ def search_max(my_list, max_value, length):
 
 
 def max_integer(my_list=[]):
-    if my_list is None:
-        pass
-    elif not my_list:
-        pass
-    else:
-        return (search_max(my_list, my_list[0], len(my_list)))
+    if my_list is not None and my_list:
+        return (search_max(my_list, my_list[0], len(my_list) - 1))
