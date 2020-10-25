@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def print_sorted_dictionary(a_dictionary):
     list_orden = sorted(list(zip(a_dictionary.items())))
     for item in list_orden:
