@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 def safe_print_list(my_list=[], x=0):
     try:
-        number_of_element_print = int()
-        for item_print in range(x):
-            print("{0}".format(item_print), end='')
-            number_of_element_print += 1
+        Number_print = int()
+        for times in range(x):
+            hold_item = my_list.pop(times)
+            print("{0}".format(hold_item), end='')
+            my_list.insert(times, hold_item)
+            Number_print += 1
         print()
     except:
-        return number_of_element_print
-    return number_of_element_print
+        print()
+        return Number_print
+    return Number_print
