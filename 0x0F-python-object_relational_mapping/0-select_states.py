@@ -3,36 +3,17 @@
    Script that lists all states from the database hbtn_0e_0_usa
 """
 
-
-if __name__ == '__main__':
-    import sys
+if __name__ == "__main__":
     import MySQLdb
+    from sys import argv
 
-    DB_HOST = 'localhost'
-    DB_PORT = 3306
-    DB_USER = sys.argv[1]
-    DB_PASS = sys.argv[2]
-    DB_NAME = sys.argv[3]
-    CHARSET = 'utf8'
-
-    # Nos conectamos a la base de datos
-
-    conn = MySQLdb.connect(host=DB_HOST,
-                           port=DB_PORT,
-                           user=DB_USER,
-                           db=DB_NAME,
-                           charset=CHARSET)
-
-    # Colocamos el cursor
-
-    cursor = conn.cursor()
-
-    # Ejecutamos el comando SQL
-
+    db = MySQLdb.connect(host="localhost", port=3306,
+                         user=argv[1], passwd=argv[2],
+                         db=argv[3], charset="utf8")
+    cursor = db.cursor()
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
     for row in cursor.fetchall():
         print(row)
-
-    cursor.close()
-    conn.close()
+    cur.close()
+    db.close()
