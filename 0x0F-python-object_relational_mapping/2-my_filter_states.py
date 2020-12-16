@@ -36,7 +36,9 @@ if __name__ == "__main__":
                    "ORDER BY states.id ASC ".format(MATCH))
 
     for row in cursor.fetchall():
-        print(row)
+        if row[1] == MATCH:
+            print(row)
 
     cursor.close()
     conn.close()
+                                                                                        
