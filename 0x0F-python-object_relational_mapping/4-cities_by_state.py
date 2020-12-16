@@ -31,7 +31,7 @@ if __name__ == '__main__':
     # Ejecutamos el comando
 
     cursor.execute("""SELECT cities.id, cities.name, states.name FROM cities INNER JOIN states\
-    ON states.id = cities.id ORDER BY states.id ASC""")
+    ON states.id = cities.state_id ORDER BY cities.id ASC""")
 
     for row in cursor.fetchall():
         print(row)
