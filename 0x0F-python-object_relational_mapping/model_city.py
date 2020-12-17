@@ -1,22 +1,21 @@
 #!/usr/bin/python3
 """
-   Python file that contains the class definition of a City.
+    Python file that contains the class definition of a City.
 """
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
 
 
 Base = declarative_base()
 
 
-class City(model_state):
+class City(Base):
     """
-    Args:
-        Base ([type]): [description]
+    Class City
     """
     # Enlaces a los estados de la tabla States.
 
-    __tablename__ = 'states'
+    __tablename__ = 'cities'
 
     # id de atributo de clase que representa una columna de un entero
     # único generado automáticamente, no puede ser nulo y es una clave principa
