@@ -10,6 +10,7 @@ Base = declarative_base()
 
 # La clase state hereda de la instancia Base
 
+
 class State(Base):
     """
     Args:
