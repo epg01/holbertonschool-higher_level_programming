@@ -1,1 +1,1 @@
-#This directory contains some exercises with Linked List in C
+0x12-javascript-warm_up
