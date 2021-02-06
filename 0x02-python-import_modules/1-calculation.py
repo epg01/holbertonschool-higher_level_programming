@@ -11,5 +11,5 @@ if __name__ == '__main__':
     operator = tuple([add, sub, mul, div])
 
     for sing, oper in zip(sing, operator):
-        print('{a:d} {sing:s} {b:d} = {result:d}'.format(a=a, b=b, sing= sing,
+        print('{a:d} {sing:s} {b:d} = {result:d}'.format(a=a, b=b, sing=sing,
                                                          result=oper(a, b)))
