@@ -12,4 +12,4 @@ if __name__ == '__main__':
         for num_argv, argv in enumerate(sys.argv[1:], start=1):
             print("{num}: {argv}".format(num=num_argv, argv=argv))
     else:
-        print("0 argument.")
+        print("0 arguments.")
