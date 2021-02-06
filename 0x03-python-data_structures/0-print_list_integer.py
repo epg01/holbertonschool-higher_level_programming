@@ -2,5 +2,8 @@
 
 
 def print_list_integer(my_list=[]):
-    for item in my_list:
-        print("{Number}".format(Number=item))
+    try:
+        for item in my_list:
+            print("{Number}".format(Number=item))
+    except:
+        pass
