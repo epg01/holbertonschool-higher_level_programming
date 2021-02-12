@@ -1,10 +1,11 @@
 #!/usr/bin/node
-if (isNaN(process.argv[2])) {
-  console.log(1);
-} else {
-  let Factorial = Number(1);
-  for (let i = Number(process.argv[2]); i > 0; i--) {
-    Factorial = Factorial * i;
+function Recursive (Number, Factorial) {
+  if (isNaN(Number) || (!Number)) {
+    return (Factorial);
   }
-  console.log(Factorial);
+  else {
+    return (Recursive(Number - 1, Factorial * Number));
+  }
 }
+
+console.log(Recursive(process.argv[2], Number(1)));
