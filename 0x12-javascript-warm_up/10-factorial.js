@@ -7,6 +7,6 @@ function Recursive (Number, Factorial) {
   }
 }
 
-if (isFinite(process.argv[2]) && (Number(process.argv[2]) >= 0)) {
+if ((isFinite(process.argv[2]) && (Number(process.argv[2]) >= 0)) || (isNaN(process.argv[2]))) {
   console.log(Recursive(process.argv[2], Number(1)));
 }
