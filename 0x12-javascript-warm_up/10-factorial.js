@@ -2,10 +2,11 @@
 function Recursive (Number, Factorial) {
   if (isNaN(Number) || (!Number)) {
     return (Factorial);
-  }
-  else {
+  } else {
     return (Recursive(Number - 1, Factorial * Number));
   }
 }
 
-console.log(Recursive(process.argv[2], Number(1)));
+if (isFinite(process.argv[2]) && (Number(process.argv[2]) >= 0)) {
+  console.log(Recursive(process.argv[2], Number(1)));
+}
