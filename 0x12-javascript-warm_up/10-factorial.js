@@ -1,16 +1,16 @@
 #!/usr/bin/node
-function Recursive (Number, Factorial) {
-  if (isNaN(Number) || (!Number)) {
-    return (Factorial);
-  } else {
-    return (Recursive(Number - 1, Factorial * Number));
-  }
+function Recursive (number) {
+    if (!number || isNaN(number)) {
+	return (1);
+    } else {
+	return (number * Recursive(number - 1));
+    }
 }
 
-if ((isFinite(process.argv[2]) && (Number(process.argv[2]) >= 0)) || (isNaN(process.argv[2]))) {
-  if (1/Number(process.argv[2]) === -Infinity || 1/Number(process.argv[2]) === Infinity) {
+if (isFinite(process.argv[2]) && (Number(process.argv[2]) < 0)) {
+    return ;
+} else if (isFinite(process.argv[2]) && (Number(process.argv[2]) === Number(0))) {
     console.log(1);
     return ;
-  }
-  console.log(Recursive(process.argv[2], Number(1)));
 }
+console.log(Recursive(process.argv[2]));
