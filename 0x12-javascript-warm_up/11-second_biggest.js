@@ -1,18 +1,18 @@
 #!/usr/bin/node
 
 if (process.argv[2] && process.argv[3]) {
-  let Array_Shallow_2 = Array();
-  let Array_Shallow = Array.from(process.argv.splice(2));
-  let Max_Number = Math.max.apply(null, Array_Shallow);
+  const ArrayShallow2 = [];
+  const ArrayShallow = Array.from(process.argv.splice(2));
+  const IndexMaxNumber = ArrayShallow.indexOf(String(Math.max.apply(null, ArrayShallow)));
 
-  for (let i = 0, j = 0; i < Array_Shallow.length; i++) {
-    if (Array_Shallow[i] != Max_Number) {
-      Array_Shallow_2[j] = Array_Shallow[i];
+  for (let i = 0, j = 0; i < ArrayShallow.length; i++) {
+    if (ArrayShallow[i] !== ArrayShallow[IndexMaxNumber]) {
+      ArrayShallow2[j] = ArrayShallow[i];
       j++;
     }
   }
 
-  console.log(Math.max.apply(null, Array_Shallow_2))
+  console.log(Math.max.apply(null, ArrayShallow2));
 } else {
-    console.log(0);
+  console.log(0);
 }
